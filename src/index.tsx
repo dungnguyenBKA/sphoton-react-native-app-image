@@ -1,3 +1,8 @@
-export function multiply(a: number, b: number): Promise<number> {
-  return Promise.resolve(a * b);
+import React from 'react';
+import { Text } from 'react-native';
+
+const AppImage: React.FC = () => {
+  return <Text>Test npm package</Text>
 }
+
+export default AppImage
