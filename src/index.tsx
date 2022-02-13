@@ -1,15 +1,38 @@
-import React from 'react';
-import { Text } from 'react-native';
-import dayjs from 'dayjs';
-// import FastImage, { FastImageProps } from 'react-native-fast-image';
+import React, { useContext, useState } from 'react';
 
-interface AppImageProps {
-
+interface User {
+  username: string,
 }
 
-const AppImage: React.FC<AppImageProps> = ({  }) => {
-  const time = dayjs('2022-02-13').toString()
-  return <Text>Hi, {time}</Text>;
+interface AuthContextApi {
+  user: User | undefined,
+  setUser: (user: User | undefined) => void
+}
+
+const defaultAuthValue: AuthContextApi = {
+  setUser: (user: User | undefined) => {
+    // do nothing
+  },
+  user: undefined,
 };
 
-export default AppImage;
+const UserAuthContext = React.createContext<AuthContextApi>(defaultAuthValue);
+
+export const UserAuthenticate: React.FC = ({ children }) => {
+  const [user, setUser] = useState<User>();
+
+  const contextValue: AuthContextApi = {
+    setUser: (user: User | undefined) => {
+      setUser(user);
+    },
+    user: user,
+  };
+
+  return <UserAuthContext.Provider value={contextValue}>
+    {children}
+  </UserAuthContext.Provider>;
+};
+
+export const useAuth = () => {
+  return useContext(UserAuthContext);
+};

@@ -10,13 +10,6 @@ npm install react-native-sphoton-app-image
 
 ## Usage
 
-```js
-import { multiply } from "react-native-sphoton-app-image";
-
-// ...
-
-const result = await multiply(3, 7);
-```
 
 ## Contributing
 
