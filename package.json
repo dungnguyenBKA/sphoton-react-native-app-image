@@ -1,6 +1,6 @@
 {
   "name": "react-native-sphoton-app-image",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "sphoton app image component",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
